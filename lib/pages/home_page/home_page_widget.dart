@@ -139,7 +139,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                         'Enable your device bluetooth to scan for nearby devices.',
                         style: FlutterFlowTheme.of(context).bodyLarge.override(
                               fontFamily: 'Montserrat',
-                              color: FlutterFlowTheme.of(context).secondaryText,
+                              color: FlutterFlowTheme.of(context).primaryText,
                               letterSpacing: 0.0,
                             ),
                       ),

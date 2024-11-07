@@ -92,6 +92,7 @@ class _SplashPageWidgetState extends State<SplashPageWidget> {
                       'Fetching bluetooth status...',
                       style: FlutterFlowTheme.of(context).labelMedium.override(
                             fontFamily: 'Montserrat',
+                            color: FlutterFlowTheme.of(context).primaryText,
                             letterSpacing: 0.0,
                           ),
                     ),

@@ -78,7 +78,7 @@ class _PowerSupplyWidgetState extends State<PowerSupplyWidget> {
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         appBar: AppBar(
-          backgroundColor: Colors.white,
+          backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
           automaticallyImplyLeading: false,
           leading: FlutterFlowIconButton(
             borderColor: Colors.transparent,
@@ -87,7 +87,7 @@ class _PowerSupplyWidgetState extends State<PowerSupplyWidget> {
             buttonSize: 60.0,
             icon: Icon(
               Icons.arrow_back_rounded,
-              color: Color(0xFF14181B),
+              color: FlutterFlowTheme.of(context).primaryText,
               size: 30.0,
             ),
             onPressed: () async {
@@ -114,7 +114,7 @@ class _PowerSupplyWidgetState extends State<PowerSupplyWidget> {
             width: double.infinity,
             height: double.infinity,
             decoration: BoxDecoration(
-              color: FlutterFlowTheme.of(context).primary,
+              color: FlutterFlowTheme.of(context).primaryBackground,
             ),
             child: Column(
               mainAxisSize: MainAxisSize.max,

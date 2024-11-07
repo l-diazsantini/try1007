@@ -79,7 +79,7 @@ class _MultimeterCopyWidgetState extends State<MultimeterCopyWidget> {
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         appBar: AppBar(
-          backgroundColor: Colors.white,
+          backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
           automaticallyImplyLeading: false,
           leading: FlutterFlowIconButton(
             borderColor: Colors.transparent,
@@ -88,7 +88,7 @@ class _MultimeterCopyWidgetState extends State<MultimeterCopyWidget> {
             buttonSize: 60.0,
             icon: Icon(
               Icons.arrow_back_rounded,
-              color: Color(0xFF14181B),
+              color: FlutterFlowTheme.of(context).primaryText,
               size: 30.0,
             ),
             onPressed: () async {
@@ -115,7 +115,7 @@ class _MultimeterCopyWidgetState extends State<MultimeterCopyWidget> {
             width: double.infinity,
             height: double.infinity,
             decoration: BoxDecoration(
-              color: FlutterFlowTheme.of(context).primary,
+              color: FlutterFlowTheme.of(context).primaryBackground,
             ),
             child: Align(
               alignment: AlignmentDirectional(0.0, 0.0),

@@ -34,7 +34,6 @@ dependencies:
   collection: 1.18.0
   device_info_plus: 10.1.2
   device_info_plus_platform_interface: 7.0.1
-  dropdown_button2: 2.3.9
   fl_chart: 0.68.0
   flutter_animate: 4.5.0
   flutter_blue_plus:

@@ -216,9 +216,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           ),
         ),
         FFRoute(
-          name: 'Oscilloscope',
-          path: '/oscilloscope',
-          builder: (context, params) => OscilloscopeWidget(
+          name: 'testtttttttt',
+          path: '/testtttttttt',
+          builder: (context, params) => TestttttttttWidget(
             deviceName: params.getParam(
               'deviceName',
               ParamType.String,
@@ -260,9 +260,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           ),
         ),
         FFRoute(
-          name: 'test',
-          path: '/test',
-          builder: (context, params) => TestWidget(
+          name: 'Oscilloscope',
+          path: '/oscilloscope',
+          builder: (context, params) => OscilloscopeWidget(
             devicee: params.getParam(
               'devicee',
               ParamType.DataStruct,
@@ -272,70 +272,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           ),
         ),
         FFRoute(
-          name: 'DevicePageCopy',
-          path: '/devicePageCopy',
-          builder: (context, params) => DevicePageCopyWidget(
-            deviceName: params.getParam(
-              'deviceName',
-              ParamType.String,
-            ),
-            deviceId: params.getParam(
-              'deviceId',
-              ParamType.String,
-            ),
-            deviceRssi: params.getParam(
-              'deviceRssi',
-              ParamType.int,
-            ),
-            hasWriteCharacteristic: params.getParam(
-              'hasWriteCharacteristic',
-              ParamType.bool,
-            ),
-          ),
-        ),
-        FFRoute(
-          name: 'DevicePageCopy2',
-          path: '/devicePageCopy2',
-          builder: (context, params) => DevicePageCopy2Widget(
-            deviceName: params.getParam(
-              'deviceName',
-              ParamType.String,
-            ),
-            deviceId: params.getParam(
-              'deviceId',
-              ParamType.String,
-            ),
-            deviceRssi: params.getParam(
-              'deviceRssi',
-              ParamType.int,
-            ),
-            hasWriteCharacteristic: params.getParam(
-              'hasWriteCharacteristic',
-              ParamType.bool,
-            ),
-          ),
-        ),
-        FFRoute(
-          name: 'SquareWave',
-          path: '/squareWave',
-          builder: (context, params) => SquareWaveWidget(
-            deviceName: params.getParam(
-              'deviceName',
-              ParamType.String,
-            ),
-            deviceId: params.getParam(
-              'deviceId',
-              ParamType.String,
-            ),
-            deviceRssi: params.getParam(
-              'deviceRssi',
-              ParamType.int,
-            ),
-            hasWriteCharacteristic: params.getParam(
-              'hasWriteCharacteristic',
-              ParamType.bool,
-            ),
-          ),
+          name: 'Square',
+          path: '/square',
+          builder: (context, params) => SquareWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
