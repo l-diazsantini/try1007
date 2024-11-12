@@ -32,6 +32,7 @@ class _SplashPageWidgetState extends State<SplashPageWidget> {
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       await requestPermission(bluetoothPermission);
       _model.bluetoothEnabled = await actions.isBluetoothEnabled();
+      await actions.lockPortraitOrientation();
 
       context.goNamed(
         'HomePage',
