@@ -10,11 +10,11 @@ import 'package:flutter/scheduler.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'wave_gen_model.dart';
-export 'wave_gen_model.dart';
+import 'tri_model.dart';
+export 'tri_model.dart';
 
-class WaveGenWidget extends StatefulWidget {
-  const WaveGenWidget({
+class TriWidget extends StatefulWidget {
+  const TriWidget({
     super.key,
     required this.deviceName,
     required this.deviceId,
@@ -28,18 +28,18 @@ class WaveGenWidget extends StatefulWidget {
   final bool? hasWriteCharacteristic;
 
   @override
-  State<WaveGenWidget> createState() => _WaveGenWidgetState();
+  State<TriWidget> createState() => _TriWidgetState();
 }
 
-class _WaveGenWidgetState extends State<WaveGenWidget> {
-  late WaveGenModel _model;
+class _TriWidgetState extends State<TriWidget> {
+  late TriModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => WaveGenModel());
+    _model = createModel(context, () => TriModel());
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
@@ -95,11 +95,11 @@ class _WaveGenWidgetState extends State<WaveGenWidget> {
             },
           ),
           title: Text(
-            'Waveform Generator',
+            'Triangle Wave',
             style: FlutterFlowTheme.of(context).titleMedium.override(
                   fontFamily: 'Montserrat',
                   color: FlutterFlowTheme.of(context).primaryText,
-                  fontSize: 28.0,
+                  fontSize: 30.0,
                   letterSpacing: 0.0,
                   fontWeight: FontWeight.w500,
                 ),
@@ -110,12 +110,7 @@ class _WaveGenWidgetState extends State<WaveGenWidget> {
         ),
         body: SafeArea(
           top: true,
-          child: Container(
-            width: double.infinity,
-            height: double.infinity,
-            decoration: BoxDecoration(
-              color: FlutterFlowTheme.of(context).primaryBackground,
-            ),
+          child: SingleChildScrollView(
             child: Column(
               mainAxisSize: MainAxisSize.max,
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -123,7 +118,7 @@ class _WaveGenWidgetState extends State<WaveGenWidget> {
                 Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
                   child: Text(
-                    'Select the signal to be generated.',
+                    'What frequency and amplitude would you like the wave to have?',
                     textAlign: TextAlign.start,
                     style: FlutterFlowTheme.of(context).headlineLarge.override(
                           fontFamily: 'Montserrat',
@@ -140,26 +135,13 @@ class _WaveGenWidgetState extends State<WaveGenWidget> {
                     hoverColor: Colors.transparent,
                     highlightColor: Colors.transparent,
                     onTap: () async {
-                      context.pushNamed(
-                        'Square',
-                        queryParameters: {
-                          'deviceName': serializeParam(
-                            widget!.deviceName,
-                            ParamType.String,
-                          ),
-                          'deviceId': serializeParam(
-                            widget!.deviceId,
-                            ParamType.String,
-                          ),
-                          'deviceRssi': serializeParam(
-                            widget!.deviceRssi,
-                            ParamType.int,
-                          ),
-                          'hasWriteCharacteristic': serializeParam(
-                            true,
-                            ParamType.bool,
-                          ),
-                        }.withoutNulls,
+                      await actions.sendData(
+                        BTDeviceStruct(
+                          name: widget!.deviceName,
+                          id: widget!.deviceId,
+                          rssi: _model.currentRssi,
+                        ),
+                        'Tri1',
                       );
                     },
                     child: Material(
@@ -181,11 +163,6 @@ class _WaveGenWidgetState extends State<WaveGenWidget> {
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
                             children: [
-                              Icon(
-                                FFIcons.kwaveSquareSvgrepoCom3,
-                                color: FlutterFlowTheme.of(context).primary,
-                                size: 36.0,
-                              ),
                               Expanded(
                                 child: Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
@@ -197,26 +174,13 @@ class _WaveGenWidgetState extends State<WaveGenWidget> {
                                         CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                        'Square Wave',
+                                        'Frequency = \nAmplitude = ',
                                         style: FlutterFlowTheme.of(context)
                                             .titleLarge
                                             .override(
                                               fontFamily: 'Montserrat',
                                               letterSpacing: 0.0,
                                             ),
-                                      ),
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 4.0, 0.0, 0.0),
-                                        child: Text(
-                                          'Produce a square wave.',
-                                          style: FlutterFlowTheme.of(context)
-                                              .labelMedium
-                                              .override(
-                                                fontFamily: 'Montserrat',
-                                                letterSpacing: 0.0,
-                                              ),
-                                        ),
                                       ),
                                     ],
                                   ),
@@ -238,26 +202,13 @@ class _WaveGenWidgetState extends State<WaveGenWidget> {
                     hoverColor: Colors.transparent,
                     highlightColor: Colors.transparent,
                     onTap: () async {
-                      context.pushNamed(
-                        'Tri',
-                        queryParameters: {
-                          'deviceName': serializeParam(
-                            widget!.deviceName,
-                            ParamType.String,
-                          ),
-                          'deviceId': serializeParam(
-                            widget!.deviceId,
-                            ParamType.String,
-                          ),
-                          'deviceRssi': serializeParam(
-                            widget!.deviceRssi,
-                            ParamType.int,
-                          ),
-                          'hasWriteCharacteristic': serializeParam(
-                            true,
-                            ParamType.bool,
-                          ),
-                        }.withoutNulls,
+                      await actions.sendData(
+                        BTDeviceStruct(
+                          name: widget!.deviceName,
+                          id: widget!.deviceId,
+                          rssi: _model.currentRssi,
+                        ),
+                        'Tri2',
                       );
                     },
                     child: Material(
@@ -279,11 +230,6 @@ class _WaveGenWidgetState extends State<WaveGenWidget> {
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
                             children: [
-                              Icon(
-                                FFIcons.kwavePulse1SvgrepoCom,
-                                color: FlutterFlowTheme.of(context).primary,
-                                size: 36.0,
-                              ),
                               Expanded(
                                 child: Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
@@ -295,26 +241,13 @@ class _WaveGenWidgetState extends State<WaveGenWidget> {
                                         CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                        'Triangle Wave',
+                                        'Frequency = \nAmplitude = ',
                                         style: FlutterFlowTheme.of(context)
                                             .titleLarge
                                             .override(
                                               fontFamily: 'Montserrat',
                                               letterSpacing: 0.0,
                                             ),
-                                      ),
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 4.0, 0.0, 0.0),
-                                        child: Text(
-                                          'Produce a triangle wave.',
-                                          style: FlutterFlowTheme.of(context)
-                                              .labelMedium
-                                              .override(
-                                                fontFamily: 'Montserrat',
-                                                letterSpacing: 0.0,
-                                              ),
-                                        ),
                                       ),
                                     ],
                                   ),
@@ -329,98 +262,43 @@ class _WaveGenWidgetState extends State<WaveGenWidget> {
                 ),
                 Padding(
                   padding:
-                      EdgeInsetsDirectional.fromSTEB(24.0, 16.0, 24.0, 16.0),
-                  child: InkWell(
-                    splashColor: Colors.transparent,
-                    focusColor: Colors.transparent,
-                    hoverColor: Colors.transparent,
-                    highlightColor: Colors.transparent,
-                    onTap: () async {
-                      context.pushNamed(
-                        'Sine',
-                        queryParameters: {
-                          'deviceName': serializeParam(
-                            widget!.deviceName,
-                            ParamType.String,
-                          ),
-                          'deviceId': serializeParam(
-                            widget!.deviceId,
-                            ParamType.String,
-                          ),
-                          'deviceRssi': serializeParam(
-                            widget!.deviceRssi,
-                            ParamType.int,
-                          ),
-                          'hasWriteCharacteristic': serializeParam(
-                            false,
-                            ParamType.bool,
-                          ),
-                        }.withoutNulls,
-                      );
-                    },
-                    child: Material(
-                      color: Colors.transparent,
-                      elevation: 2.0,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12.0),
-                      ),
-                      child: Container(
+                      EdgeInsetsDirectional.fromSTEB(24.0, 24.0, 24.0, 12.0),
+                  child: Text(
+                    'Stop the wave generation:',
+                    style: FlutterFlowTheme.of(context).titleLarge.override(
+                          fontFamily: 'Montserrat',
+                          letterSpacing: 0.0,
+                        ),
+                  ),
+                ),
+                Expanded(
+                  child: Padding(
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 24.0),
+                    child: FFButtonWidget(
+                      onPressed: () async {
+                        await actions.sendData(
+                          BTDeviceStruct(),
+                          'Off',
+                        );
+                      },
+                      text: 'Stop',
+                      options: FFButtonOptions(
                         width: double.infinity,
-                        height: 100.0,
-                        decoration: BoxDecoration(
-                          color: FlutterFlowTheme.of(context).accent2,
-                          borderRadius: BorderRadius.circular(12.0),
-                        ),
-                        child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              16.0, 16.0, 16.0, 16.0),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Icon(
-                                FFIcons.ksineGraphSvgrepoCom,
-                                color: FlutterFlowTheme.of(context).primary,
-                                size: 36.0,
-                              ),
-                              Expanded(
-                                child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      12.0, 0.0, 0.0, 0.0),
-                                  child: Column(
-                                    mainAxisSize: MainAxisSize.max,
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        'Sine Wave',
-                                        style: FlutterFlowTheme.of(context)
-                                            .titleLarge
-                                            .override(
-                                              fontFamily: 'Montserrat',
-                                              letterSpacing: 0.0,
-                                            ),
-                                      ),
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 4.0, 0.0, 0.0),
-                                        child: Text(
-                                          'Prodcuce a sine wave.',
-                                          style: FlutterFlowTheme.of(context)
-                                              .labelMedium
-                                              .override(
-                                                fontFamily: 'Montserrat',
-                                                letterSpacing: 0.0,
-                                              ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
+                        height: 200.0,
+                        padding: EdgeInsetsDirectional.fromSTEB(
+                            16.0, 0.0, 16.0, 0.0),
+                        iconPadding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                        color: FlutterFlowTheme.of(context).error,
+                        textStyle:
+                            FlutterFlowTheme.of(context).titleLarge.override(
+                                  fontFamily: 'Montserrat',
+                                  color: FlutterFlowTheme.of(context).primary,
+                                  letterSpacing: 0.0,
                                 ),
-                              ),
-                            ],
-                          ),
-                        ),
+                        elevation: 0.0,
+                        borderRadius: BorderRadius.circular(8.0),
                       ),
                     ),
                   ),

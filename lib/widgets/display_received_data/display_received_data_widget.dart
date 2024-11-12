@@ -67,15 +67,6 @@ class _DisplayReceivedDataWidgetState extends State<DisplayReceivedDataWidget> {
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          'Received data',
-          style: FlutterFlowTheme.of(context).titleMedium.override(
-                fontFamily: 'Montserrat',
-                color: FlutterFlowTheme.of(context).primaryText,
-                letterSpacing: 0.0,
-                fontWeight: FontWeight.w600,
-              ),
-        ),
         Padding(
           padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
           child: Text(

@@ -97,7 +97,7 @@ class _MultimeterCopyCopyWidgetState extends State<MultimeterCopyCopyWidget> {
             },
           ),
           title: Text(
-            'View your measured voltage below.',
+            'View your measured current below.',
             style: FlutterFlowTheme.of(context).titleMedium.override(
                   fontFamily: 'Montserrat',
                   color: FlutterFlowTheme.of(context).primaryText,
@@ -118,30 +118,44 @@ class _MultimeterCopyCopyWidgetState extends State<MultimeterCopyCopyWidget> {
             decoration: BoxDecoration(
               color: FlutterFlowTheme.of(context).primaryBackground,
             ),
-            child: Align(
-              alignment: AlignmentDirectional(0.0, 0.0),
-              child: Column(
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  Expanded(
-                    child: Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 250.0, 0.0, 0.0),
-                      child: wrapWithModel(
-                        model: _model.displayReceivedDataModel,
-                        updateCallback: () => safeSetState(() {}),
-                        child: DisplayReceivedDataWidget(
-                          device: BTDeviceStruct(
-                            name: widget!.deviceName,
-                            id: widget!.deviceId,
-                            rssi: widget!.deviceRssi,
+            child: Stack(
+              children: [
+                Align(
+                  alignment: AlignmentDirectional(0.0, 0.0),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Expanded(
+                        child: Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 250.0, 0.0, 0.0),
+                          child: wrapWithModel(
+                            model: _model.displayReceivedDataModel,
+                            updateCallback: () => safeSetState(() {}),
+                            child: DisplayReceivedDataWidget(
+                              device: BTDeviceStruct(
+                                name: widget!.deviceName,
+                                id: widget!.deviceId,
+                                rssi: widget!.deviceRssi,
+                              ),
+                            ),
                           ),
                         ),
                       ),
-                    ),
+                    ],
                   ),
-                ],
-              ),
+                ),
+                Align(
+                  alignment: AlignmentDirectional(0.26, -0.31),
+                  child: Text(
+                    'A',
+                    style: FlutterFlowTheme.of(context).bodyLarge.override(
+                          fontFamily: 'Montserrat',
+                          letterSpacing: 0.0,
+                        ),
+                  ),
+                ),
+              ],
             ),
           ),
         ),

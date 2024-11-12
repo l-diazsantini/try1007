@@ -121,7 +121,7 @@ class _PowerSupplyWidgetState extends State<PowerSupplyWidget> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 0.0, 0.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
                   child: Text(
                     'Select what power you want to output.',
                     textAlign: TextAlign.start,

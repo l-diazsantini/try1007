@@ -216,28 +216,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           ),
         ),
         FFRoute(
-          name: 'testtttttttt',
-          path: '/testtttttttt',
-          builder: (context, params) => TestttttttttWidget(
-            deviceName: params.getParam(
-              'deviceName',
-              ParamType.String,
-            ),
-            deviceId: params.getParam(
-              'deviceId',
-              ParamType.String,
-            ),
-            deviceRssi: params.getParam(
-              'deviceRssi',
-              ParamType.int,
-            ),
-            hasWriteCharacteristic: params.getParam(
-              'hasWriteCharacteristic',
-              ParamType.bool,
-            ),
-          ),
-        ),
-        FFRoute(
           name: 'PowerSupply',
           path: '/powerSupply',
           builder: (context, params) => PowerSupplyWidget(
@@ -274,7 +252,68 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'Square',
           path: '/square',
-          builder: (context, params) => SquareWidget(),
+          builder: (context, params) => SquareWidget(
+            deviceName: params.getParam(
+              'deviceName',
+              ParamType.String,
+            ),
+            deviceId: params.getParam(
+              'deviceId',
+              ParamType.String,
+            ),
+            deviceRssi: params.getParam(
+              'deviceRssi',
+              ParamType.int,
+            ),
+            hasWriteCharacteristic: params.getParam(
+              'hasWriteCharacteristic',
+              ParamType.bool,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: 'Tri',
+          path: '/tri',
+          builder: (context, params) => TriWidget(
+            deviceName: params.getParam(
+              'deviceName',
+              ParamType.String,
+            ),
+            deviceId: params.getParam(
+              'deviceId',
+              ParamType.String,
+            ),
+            deviceRssi: params.getParam(
+              'deviceRssi',
+              ParamType.int,
+            ),
+            hasWriteCharacteristic: params.getParam(
+              'hasWriteCharacteristic',
+              ParamType.bool,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: 'Sine',
+          path: '/sine',
+          builder: (context, params) => SineWidget(
+            deviceName: params.getParam(
+              'deviceName',
+              ParamType.String,
+            ),
+            deviceId: params.getParam(
+              'deviceId',
+              ParamType.String,
+            ),
+            deviceRssi: params.getParam(
+              'deviceRssi',
+              ParamType.int,
+            ),
+            hasWriteCharacteristic: params.getParam(
+              'hasWriteCharacteristic',
+              ParamType.bool,
+            ),
+          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
