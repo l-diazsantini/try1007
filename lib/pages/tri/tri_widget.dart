@@ -284,7 +284,7 @@ class _TriWidgetState extends State<TriWidget> {
                       },
                       text: 'Stop',
                       options: FFButtonOptions(
-                        width: double.infinity,
+                        width: 300.0,
                         height: 200.0,
                         padding: EdgeInsetsDirectional.fromSTEB(
                             16.0, 0.0, 16.0, 0.0),
